@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+/Debug
+/packages
+/SDL2-2.0.16
+/x64/Debug
+/.vs
