@@ -43,6 +43,11 @@ public:
 	
 	void createCommandPool(void);
 	void createCommandBuffer(void);
+	void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
+
+	void createSyncObjects(void);
+
+	void drawFrame(void);
 
 	VkShaderModule createShaderModule(const std::vector<char>& code);
 	
@@ -70,6 +75,13 @@ private:
 	VkPipeline graphicsPipeline;
 
 	VkCommandPool commandPool;
+	VkCommandBuffer commandBuffer;
+
+	VkSemaphore imageAvailableSemaphore;
+	VkSemaphore renderFinishedSemaphore;
+	VkFence inFlightFence;
+
+	const VkClearValue clearColor = { { { 0.0f, 0.0f, 0.0f, 1.0f } } };
 
 	std::vector<VkFramebuffer> swapChainFramebuffers;	
 	VkSwapchainKHR swapChain;

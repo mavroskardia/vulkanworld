@@ -39,19 +39,13 @@ int main(int argc, char** argv) {
 			}
 		}
 
-		SDL_SetRenderDrawColor(renderer, 100, 100, 0, 255);
-		SDL_RenderClear(renderer);
+		vkrenderer.drawFrame();
 
-		// drawing operations here
-
-		SDL_RenderPresent(renderer);
-
-		SDL_Delay(17); // 17 == ~60fps (1000/17 ~= 60)
 	}
 	
+	vkrenderer.cleanup();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
-	vkrenderer.cleanup();
 
 	return EXIT_SUCCESS;
 }
