@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	SDL_Renderer* renderer;
 	SDL_Event evt;
 
-	if (SDL_CreateWindowAndRenderer(1024, 768, SDL_WINDOW_VULKAN, &window, &renderer) != 0) {
+	if (SDL_CreateWindowAndRenderer(1024, 768, SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE, &window, &renderer) != 0) {
 		std::cerr << SDL_GetError() << std::endl;
 		return EXIT_FAILURE;
 	}
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 			}
 		}
 
-		vkrenderer.drawFrame();
+		vkrenderer.drawFrame(window);
 
 	}
 	
