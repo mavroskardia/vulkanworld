@@ -27,15 +27,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="shader.vert">
+    <None Include="shaders\shader.vert">
       <Filter>Source Files\shaders</Filter>
     </None>
-    <None Include="shader.frag">
+    <None Include="shaders\shader.frag">
       <Filter>Source Files\shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VulkanRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tiny_obj_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,10 +1,10 @@
 #include <iostream>
 #include <cstdlib>
-#include <vulkan/vulkan.hpp>
-#include <SDL.h>
-
 #include "VulkanRenderer.h"
+#include "main.h"
 
+const uint32_t WIDTH = 1024;
+const uint32_t HEIGHT = 768;
 
 int main(int argc, char** argv) {
 
@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	SDL_Renderer* renderer;
 	SDL_Event evt;
 
-	if (SDL_CreateWindowAndRenderer(1024, 768, SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE, &window, &renderer) != 0) {
+	if (SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE, &window, &renderer) != 0) {
 		std::cerr << SDL_GetError() << std::endl;
 		return EXIT_FAILURE;
 	}
@@ -35,6 +35,14 @@ int main(int argc, char** argv) {
 			switch (evt.type) {
 				case SDL_QUIT:
 					running = false;
+					break;
+				case SDL_KEYDOWN:
+					if (evt.key.keysym.sym == SDLK_ESCAPE) {
+						running = false;
+					}
+					break;
+				case SDL_MOUSEWHEEL:					
+					vkrenderer.deltaZoom(evt.wheel.y);
 					break;
 			}
 		}
